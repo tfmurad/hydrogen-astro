@@ -1,15 +1,15 @@
 ---
-import BlogCard from "@/components/BlogCard.astro";
-import Share from "@/components/Share.astro";
 import Disqus from "@/helpers/Disqus";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
-import similarItems from "@/lib/utils/similarItems";
 import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
-import { FaRegClock, FaRegFolder, FaRegUserCircle } from "react-icons/fa";
 import ImageMod from "./components/ImageMod.astro";
+import config from "@/config/config.json";
+import similarItems from "@/lib/utils/similarItems";
+import Post from "./components/Post.astro";
+import readingTime from "@/lib/utils/readingTime";
 
-const COLLECTION_FOLDER = "blog";
+const COLLECTION_FOLDER = "posts";
 const { post } = Astro.props;
 
 const posts = await getSinglePage(COLLECTION_FOLDER);
@@ -18,92 +18,84 @@ const { Content } = await post.render();
 const { title, description, author, categories, image, date, tags } = post.data;
 ---
 
-<section class="section pt-7">
+<section class="pt-20 pb-6">
   <div class="container">
-    <div class="row justify-center">
-      <article class="lg:col-10">
-        {
-          image && (
-            <div class="mb-10">
+    <div class="row">
+      <div class="mx-auto lg:col-10">
+        <a
+          class="mb-12 inline-flex items-center text-primary hover:underline"
+          href="/"
+        >
+          <svg
+            class="mr-2"
+            width="21"
+            height="16"
+            viewBox="0 0 21 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M.292892 7.29289c-.3905235.39053-.3905235 1.02369.0 1.41422L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711 8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8 8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107.928932 7.68054.538408 7.04738.538408 6.65685.928932L.292892 7.29289zM21 7H1V9H21V7z"
+              fill="currentcolor"></path>
+          </svg>
+          Back to Home
+        </a>
+        <article>
+          {
+            image && (
               <ImageMod
+                class="w-full"
                 src={image}
                 height={500}
-                width={1200}
+                width={1000}
                 alt={title}
-                class="w-full rounded"
-                format="webp"
               />
-            </div>
-          )
-        }
-        <h1 set:html={markdownify(title)} class="h2 mb-4" />
-        <ul class="mb-4">
-          <li class="mr-4 inline-block">
-            <a href={`/authors/${slugify(author)}`}>
-              <FaRegUserCircle className={"mr-2 -mt-1 inline-block"} />
-              {humanize(author)}
-            </a>
-          </li>
-          <li class="mr-4 inline-block">
-            <FaRegFolder className={"mr-2 -mt-1 inline-block"} />
-            {
-              categories.map((category: string, index: number) => (
-                <a href={`/categories/${slugify(category)}`}>
-                  {humanize(category)}
-                  {index !== categories.length - 1 && ","}
-                </a>
-              ))
-            }
-          </li>
-          <li class="mr-4 inline-block">
-            <FaRegClock className={"mr-2 -mt-1 inline-block"} />
-            {dateFormat(date)}
-          </li>
-        </ul>
-        <div class="content mb-10">
-          <Content />
-        </div>
-        <div class="row items-start justify-between">
-          <div class="mb-10 flex items-center lg:col-5 lg:mb-0">
-            <h5 class="mr-3">Tags :</h5>
-            <ul>
-              {
-                tags.map((tag: string) => (
-                  <li class="inline-block">
-                    <a
-                      class="m-1 block rounded bg-theme-light px-3 py-1 hover:bg-primary hover:text-white   "
-                      href={`/tags/${slugify(tag)}`}
-                    >
-                      {humanize(tag)}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
+            )
+          }
+          <h1 set:html={markdownify(title)} class="h2 mt-12" />
+          <ul class="mt-4 mb-8 text-text">
+            <li class="mb-2 mr-4 inline-block">
+              <ul>
+                {
+                  categories.map((category: any) => (
+                    <li class="inline-block">
+                      <a
+                        href={`/categories/${slugify(category)}`}
+                        class="mr-3 text-primary"
+                      >
+                        {humanize(category)}
+                      </a>
+                    </li>
+                  ))
+                }
+                |
+              </ul>
+            </li>
+            <li class="mb-2 mr-4 inline-block">
+              <span class="mr-2 inline-block">
+                {dateFormat(date)}
+              </span>{" "}
+              |
+            </li>
+            <li class="mb-2 mr-4 inline-block">
+              {readingTime(post.body)}
+            </li>
+          </ul>
+          <div class="content text-left">
+            <Content />
           </div>
-          <div class="flex items-center lg:col-4">
-            <h5 class="mr-3">Share :</h5>
-            <Share
-              className="social-icons"
-              title={title}
-              description={description}
-              slug={post.slug}
-            />
-          </div>
-        </div>
-        <Disqus className="mt-20" client:load />
-      </article>
+        </article>
+
+        {config.disqus.enable && <Disqus className="mt-20" client:load />}
+      </div>
     </div>
 
-    <!-- Related posts -->
-    <div class="section pb-0">
-      <h2 class="h3 mb-12 text-center">Related Posts</h2>
-      <div class="row justify-center">
+    <div class="pt-12">
+      <h2 class="h2 text-center">Related Posts</h2>
+      <div class="row mt-12 justify-center">
         {
           similarPosts.map((post) => (
-            <div class="lg:col-4">
-              <BlogCard data={post} />
-            </div>
+            <Post className="col-12 mb-6 md:col-4" post={post} />
           ))
         }
       </div>

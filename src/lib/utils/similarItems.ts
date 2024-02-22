@@ -9,9 +9,9 @@ const similarItems = (currentItem: any, allItems: any[]) => {
   }
 
   // set tags
-  if (currentItem.data.tags.length > 0) {
-    tags = currentItem.data.tags;
-  }
+  // if (currentItem.data.tags.length > 0) {
+  //   tags = currentItem.data.tags;
+  // }
 
   // filter by categories
   const filterByCategories = allItems.filter((item: any) =>

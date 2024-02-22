@@ -36,7 +36,7 @@ const filterByCategories = taxonomyFilter(posts, "categories", category!);
           <div class="row pt-12">
             {
               filterByCategories.map((post) => (
-                <Post class="mb-6 sm:col-6" post={post} />
+                <Post className="mb-6 sm:col-6" post={post} />
               ))
             }
           </div>

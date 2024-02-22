@@ -13,3 +13,15 @@
 .btn-outline-primary {
   @apply border-dark bg-transparent text-dark no-underline hover:bg-dark hover:text-white;
 }
+
+.btn-link {
+  @apply relative overflow-hidden duration-200 hover:ml-1;
+
+  &::after {
+    @apply absolute right-0 bottom-0 h-[1px] w-0 bg-primary transition-all duration-200 content-[""];
+  }
+
+  &:hover::after {
+    @apply right-auto left-0 w-full;
+  }
+}
