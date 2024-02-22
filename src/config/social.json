@@ -16,6 +16,11 @@
       "link": "https://www.github.com/"
     },
     {
+      "name": "youtube",
+      "icon": "FaYoutube",
+      "link": "https://www.youtube.com/"
+    },
+    {
       "name": "linkedin",
       "icon": "FaLinkedin",
       "link": "https://www.linkedin.com/"

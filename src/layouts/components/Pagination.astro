@@ -18,10 +18,7 @@ for (let i = 1; i <= totalPages; i++) {
 
 {
   totalPages > 1 && (
-    <nav
-      class="flex items-center justify-center space-x-3"
-      aria-label="Pagination"
-    >
+    <nav class="mb-4 flex justify-center -space-x-px" aria-label="Pagination">
       {/* previous */}
       {hasPrevPage ? (
         <a
@@ -30,15 +27,15 @@ for (let i = 1; i <= totalPages; i++) {
               ? `${section ? "/" + section : "/"}`
               : `${section ? "/" + section : ""}/page/${currentPage - 1}`
           }
-          class="rounded px-2 py-1.5 text-dark hover:bg-theme-light  "
+          class="border border-primary px-2 py-2 text-text"
         >
           <span class="sr-only">Previous</span>
           <svg
+            class="mt-1 h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
-            height="30"
-            width="30"
           >
             <path
               fill-rule="evenodd"
@@ -48,14 +45,14 @@ for (let i = 1; i <= totalPages; i++) {
           </svg>
         </a>
       ) : (
-        <span class="rounded px-2 py-1.5 text-light">
+        <span class="border border-primary px-2 py-2 text-text">
           <span class="sr-only">Previous</span>
           <svg
+            class="mt-1 h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
-            height="30"
-            width="30"
           >
             <path
               fill-rule="evenodd"
@@ -71,7 +68,7 @@ for (let i = 1; i <= totalPages; i++) {
         pagination === currentPage ? (
           <span
             aria-current="page"
-            class="rounded bg-primary px-4 py-2 text-white  "
+            class="border border-primary bg-primary px-4 py-2 text-white"
           >
             {pagination}
           </span>
@@ -83,7 +80,7 @@ for (let i = 1; i <= totalPages; i++) {
                 : `${section ? "/" + section : ""}/page/${pagination}`
             }
             aria-current="page"
-            class="rounded px-4 py-2 text-dark hover:bg-theme-light  "
+            class="border border-primary px-4 py-2 text-text"
           >
             {pagination}
           </a>
@@ -94,15 +91,15 @@ for (let i = 1; i <= totalPages; i++) {
       {hasNextPage ? (
         <a
           href={`${section ? "/" + section : ""}/page/${currentPage + 1}`}
-          class="rounded px-2 py-1.5 text-dark hover:bg-theme-light  "
+          class="border border-primary px-2 py-2 text-text"
         >
           <span class="sr-only">Next</span>
           <svg
+            class="mt-1 h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
-            height="30"
-            width="30"
           >
             <path
               fill-rule="evenodd"
@@ -112,14 +109,14 @@ for (let i = 1; i <= totalPages; i++) {
           </svg>
         </a>
       ) : (
-        <span class="rounded px-2 py-1.5 text-light">
+        <span class="border border-primary px-2 py-2 text-text">
           <span class="sr-only">Next</span>
           <svg
+            class="mt-1 h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
             aria-hidden="true"
-            height="30"
-            width="30"
           >
             <path
               fill-rule="evenodd"

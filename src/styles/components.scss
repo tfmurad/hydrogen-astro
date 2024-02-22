@@ -22,13 +22,14 @@
 
 // social icons
 .social-icons {
-  @apply space-x-4;
+  @apply space-x-6;
   li {
     @apply inline-block;
     a {
-      @apply flex h-9 w-9 items-center justify-center rounded bg-primary text-center leading-9 text-white;
+      @apply flex text-2xl text-dark items-center justify-center text-center leading-9;
       svg {
-        @apply h-5 w-5;
+        @apply transition
+        duration-200 ease-in-out hover:scale-125;
       }
     }
   }
