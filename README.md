@@ -1,11 +1,12 @@
 <h1 align=center>Hydrogen Astro</h1>
-<p align=center>Hydrogen is a minimal & highly customizable free Astro personal blog template ideal for creating personal blog website.</p>
-<h2 align="center"> <a target="_blank" href="https://hydrogen-nextjs.vercel.app/" rel="nofollow">Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fhydrogen-nextjs.vercel.app%2F&form_factor=desktop">Page Speed (100%)</a>
+<p align=center>Hydrogen is a minimal & highly customizable free Astro personal blog template ideal for creating personal blog website.
+</p>
+<h2 align="center"> <a target="_blank" href="https://hydrogen-nextjs.vercel.app/" rel="nofollow">👀Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fhydrogen-nextjs.vercel.app%2F&form_factor=desktop">Page Speed (100%)🚀</a>
 </h2>
 
 <p align=center>
-  <a href="https://github.com/vercel/next.js/releases/tag/v13.0.6" alt="Contributors">
-    <img src="https://img.shields.io/static/v1?label=NEXTJS&message=13.0&color=000&logo=nextjs" />
+  <a href="https://github.com/withastro/astro/releases/tag/astro%404.4.4" alt="Contributors">
+    <img src="https://img.shields.io/static/v1?label=ASTRO&message=4.4&color=000&logo=astro" />
   </a>
 
   <a href="https://github.com/statichunt/hydrogen-nextjs/blob/main/LICENSE">
@@ -76,7 +77,7 @@ If your problem or idea has not been addressed yet, feel free to [open a new iss
 <!-- licence -->
 ## License
 
-Copyright (c) 2019 - Present, Designed & Developed by [statichunt](https://statichunt.com)
+Copyright (c) 2024 - Present, Designed & Developed by [statichunt](https://statichunt.com)
 
 **Code License:** Released under the [MIT](https://github.com/statichunt/hydrogen-nextjs/blob/main/LICENSE) license.
 
