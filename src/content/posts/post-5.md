@@ -4,7 +4,6 @@ date: 2024-02-25T05:00:00Z
 image: /images/posts/post-5.jpg
 categories:
   - Technology
-  - Workstation
 draft: false
 ---
 
