@@ -1,17 +1,13 @@
 .btn {
-  @apply inline-block rounded border border-transparent px-5 py-2 font-semibold capitalize transition;
-}
-
-.btn-sm {
-  @apply rounded-sm px-4 py-1.5 text-sm;
+  @apply inline-block border px-4 py-[11px] font-normal transition;
 }
 
 .btn-primary {
-  @apply border-primary bg-primary text-white no-underline;
+  @apply rounded border-none bg-white text-black no-underline hover:bg-primary;
 }
 
 .btn-outline-primary {
-  @apply border-dark bg-transparent text-dark no-underline hover:bg-dark hover:text-white;
+  @apply border-primary bg-transparent hover:bg-primary hover:text-dark;
 }
 
 .btn-link {

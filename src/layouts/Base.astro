@@ -9,6 +9,7 @@ import "@/styles/main.scss";
 import { AstroFont } from "astro-font";
 import { ViewTransitions } from "astro:transitions";
 import SearchModal from "./helpers/SearchModal";
+const { pathname } = Astro.url;
 
 // font families
 const pf = theme.fonts.font_family.primary;
@@ -172,7 +173,7 @@ const { title, meta_title, description, image, noindex, canonical } =
   </head>
   <body>
     <TwSizeIndicator />
-    <Header />
+    {!pathname.startsWith("/posts/") && <Header />}
     <SearchModal client:load />
     <main id="main-content">
       <slot />

@@ -1,12 +1,14 @@
 ---
 import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
+import { markdownify } from "@/lib/utils/textConverter";
 import PageHeader from "@/partials/PageHeader.astro";
 import { getEntry } from "astro:content";
 
 const contact = await getEntry("contact", "-index");
 const { contact_form_action }: { contact_form_action: string } = config.params;
 const { title, description, meta_title, image } = contact.data;
+const { Content } = await contact.render();
 ---
 
 <Base
@@ -15,49 +17,60 @@ const { title, description, meta_title, image } = contact.data;
   description={description}
   image={image}
 >
-  <PageHeader title={title} />
-  <section class="section-sm">
+  <section class="section pt-[72px]">
     <div class="container">
       <div class="row">
-        <div class="mx-auto md:col-10 lg:col-6">
-          <form action={contact_form_action} method="POST">
-            <div class="mb-6">
-              <label for="name" class="form-label">
-                Full Name <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="John Doe"
-                type="text"
-              />
-            </div>
-            <div class="mb-6">
-              <label for="email" class="form-label">
-                Working Mail <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="email"
-                name="email"
-                class="form-input"
-                placeholder="john.doe@email.com"
-                type="email"
-              />
-            </div>
-            <div class="mb-6">
-              <label for="message" class="form-label">
-                Anything else? <span class="text-red-500">*</span>
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                class="form-input"
-                placeholder="Message goes here..."
-                rows="8"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        <div class="mx-auto lg:col-8">
+          <div class="content">
+            <Content />
+          </div>
+          <div class="mt-12 pt-12">
+            <h3 set:html={markdownify(title)} class="h5 font-normal text-3xl" />
+            <form class="contact-form mt-6" action={contact_form_action}>
+              <div class="row mb-6">
+                <div class="md:col-6">
+                  <label class="mb-2 block" for="name"> Name </label>
+                  <input
+                    class="form-input w-full"
+                    name="name"
+                    type="text"
+                    placeholder="Alex Smith"
+                    required
+                  />
+                </div>
+                <div class="mt-6 md:mt-0 md:col-6">
+                  <label class="mb-2 block" for="email"> Email </label>
+                  <input
+                    class="form-input w-full"
+                    name="email"
+                    type="email"
+                    placeholder="hello@gmail.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-6">
+                <label class="mb-2 block" for="subject"> Subject </label>
+                <input
+                  class="form-input w-full"
+                  name="subject"
+                  type="text"
+                  placeholder="Reasons for contact"
+                  required
+                />
+              </div>
+              <div class="mb-6">
+                <label class="mb-2 block" for="message"> Message </label>
+                <textarea
+                  class="form-textarea w-full"
+                  rows="6"
+                  placeholder="Your message"></textarea>
+              </div>
+              <button class="btn btn-primary rounded text-sm">
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
