@@ -32,7 +32,7 @@ content:
 
   - name: site-settings
     label: Site Settings
-    path: src/config/site.json
+    path: src/config/theme.json
     type: file
     fields:
       - name: title
@@ -52,5 +52,5 @@ content:
         description: Image used in the social preview on social networks (e.g. Facebook, Twitter...)
 
 media:
-  input: public/media
+  input: public/images/media
   output: /media
